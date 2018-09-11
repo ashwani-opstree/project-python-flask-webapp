@@ -57,11 +57,22 @@ pipeline {
 					mavenCoordinate: [
 						artifactId: 'webapp', 
 						groupId: 'com.py', 
-						packaging: 'tar.zip', 
-						version: '2.4.0'
+						packaging: 'tar.gz', 
+						version: '2.5.0'
 					]
 				]]				
             } 
         }
+		stage('Deploy App'){
+			steps {
+				sh '''
+				    mkdir -p /tmp/app
+					curl -u admin:admin123 -X GET 'http://18.210.172.8:8081/repository/py-release/com/py/webapp/2.4.0/webapp-2.4.0.tar.zip' -o /tmp/app/webapp.tar.gz
+					cd /tmp/app ; tar -xvf webapp.tar.gz
+					python runserver.py > /tmp/app.log 2>&1 &
+					echo $! > /tmp/pidfile
+				'''
+			}
+		}
     }
 }
