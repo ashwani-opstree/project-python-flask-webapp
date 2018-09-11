@@ -6,7 +6,8 @@ pipeline {
   	}
   	tools { 
   		maven 'maven-3.5.4' 
-        jdk 'jdk-8' 
+        jdk 'jdk-8'
+		scannerHome 'sonarscanner' 
     }
     stages {
         stage ('Initialize') {
@@ -29,8 +30,10 @@ pipeline {
             }
         }
         stage('SonarQube analysis') {
-            steps {
-				def scannerHome = tool 'sonarscanner';
+			steps {
+                script {
+             		scannerHome = tool 'sonarscanner';
+        		}
     			withSonarQubeEnv('sonarqube') {
 					sh "${scannerHome}/bin/sonar-scanner"
                	} 
@@ -43,7 +46,22 @@ pipeline {
 		}
         stage('Release') {
             steps {
-				nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'py-release', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/tmp/webapp.tar.gz']], mavenCoordinate: [artifactId: '', groupId: 'com.py', packaging: 'tar.gz', version: '1.2.5']]], tagName: 'build-125'				
+				nexusPublisher nexusInstanceId: 'nexus3', 
+				nexusRepositoryId: 'py-release', 
+				packages: [[
+					$class: 'MavenPackage', 
+					mavenAssetList: [[
+						classifier: '', 
+						extension: '', 
+						filePath: '/tmp/webapp.tar.gz'
+					]], 
+					mavenCoordinate: [
+						artifactId: 'webapp', 
+						groupId: 'com.py', 
+						packaging: 'tar.zip', 
+						version: '2.4.0'
+					]
+				]]				
             } 
         }
     }
