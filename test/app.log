@@ -1,0 +1,18 @@
+ * Serving Flask app "python_webapp_flask" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:5555/ (Press CTRL+C to quit)
+127.0.0.1 - - [11/Sep/2018 18:42:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/content/bootstrap.min.css HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/content/site.css HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/scripts/modernizr-2.6.2.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/scripts/respond.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/scripts/bootstrap.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/scripts/jquery-1.10.2.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/img/successCloudNew.svg HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:15] "GET /static/img/tweetThis.svg HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:16] "GET /static/fonts/segoeuil.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [11/Sep/2018 18:42:16] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [11/Sep/2018 18:42:16] "GET /favicon.ico HTTP/1.1" 404 -
