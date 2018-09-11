@@ -66,6 +66,7 @@ pipeline {
 		stage('Deploy App'){
 			steps {
 				sh '''
+					rm -rf /tmp/app
 				    mkdir -p /tmp/app
 					curl -u admin:admin123 -X GET 'http://18.210.172.8:8081/repository/py-release/com/py/webapp/2.4.0/webapp-2.4.0.tar.zip' -o /tmp/app/webapp.tar.gz
 					cd /tmp/app; tar -xvf webapp.tar.gz
