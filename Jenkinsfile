@@ -7,7 +7,6 @@ pipeline {
   	tools { 
   		maven 'maven-3.5.4' 
         jdk 'jdk-8'
-		scannerHome 'sonarscanner' 
     }
     stages {
         stage ('Initialize') {
