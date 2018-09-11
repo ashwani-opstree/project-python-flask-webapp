@@ -31,7 +31,7 @@ pipeline {
         stage('SonarQube') {
             steps {
     			withSonarQubeEnv('sonarqube') {
-					// some block
+					sh 'sonar-scanner'
                	} 
            	}
       	}
@@ -42,7 +42,7 @@ pipeline {
 		}
         stage('Release') {
             steps {
-				nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'py-release', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/tmp/webapp.tar.gz']], mavenCoordinate: [artifactId: 'fancyWidget', groupId: 'com.py', packaging: 'tar.gz', version: '1.2.5']]], tagName: 'build-125'				
+				nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'py-release', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/tmp/webapp.tar.gz']], mavenCoordinate: [artifactId: '', groupId: 'com.py', packaging: 'tar.gz', version: '1.2.5']]], tagName: 'build-125'				
             } 
         }
     }
