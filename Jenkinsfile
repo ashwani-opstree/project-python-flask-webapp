@@ -58,7 +58,7 @@ pipeline {
 						artifactId: 'webapp', 
 						groupId: 'com.py', 
 						packaging: 'tar.gz', 
-						version: '2.8.0'
+						version: '2.9.0'
 					]
 				]]				
             } 
