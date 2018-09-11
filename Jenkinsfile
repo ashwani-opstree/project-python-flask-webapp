@@ -36,7 +36,9 @@ pipeline {
            	}
       	}
 		stage('BuildArtifact'){
-			sh 'rm -rf /tmp/webapp.tar.gz; tar -czf /tmp/webapp.tar.gz .'
+			steps {
+				sh 'rm -rf /tmp/webapp.tar.gz; tar -czf /tmp/webapp.tar.gz .'
+			}
 		}
         stage('Release') {
             steps {
